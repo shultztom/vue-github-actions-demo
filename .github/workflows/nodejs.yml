@@ -1,6 +1,9 @@
-name: Node CI
+name: Install, Build, and Deploy
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   build:
@@ -9,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [8.x, 10.x, 12.x]
+        node-version: [10.x]
 
     steps:
     - uses: actions/checkout@v1
@@ -17,9 +20,12 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: yarn install, build, and test
+    - name: yarn install, build
       run: |
         yarn install
         yarn build
+    - name: GitHub Pages Deploy
+      uses: maxheld83/ghpages@v0.2.1
       env:
-        CI: true
+        BUILD_DIR: "dist/"
+
