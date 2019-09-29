@@ -2,7 +2,7 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
     <HelloWorld
-      msg="Welcome to Your Vue.js App. This app was built and deployed using GitHub Pages."
+      msg="Welcome to Your Vue.js App. This app was built and deployed using GitHub Actions."
     />
   </div>
 </template>
